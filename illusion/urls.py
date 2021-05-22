@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -22,13 +22,18 @@ from drf_yasg import openapi
 info = openapi.Info(
     title="Illusion API",
     default_version="",
-    description="Demonstrate the use of serializers"
+    description="Demonstrate the use of serializers",
+    contact=openapi.Contact(
+        name="Kalenshi Katebe",
+        email="kalenshi@hotmail.com",
+        url="https://www.kalenshi.com"
+    )
 )
 
 
 schema_view = get_schema_view(info)
 
 urlpatterns = [
+    path("api/", include("core.urls")),
     path('', schema_view.with_ui("swagger"), name="swagger"),
-    path('admin/', admin.site.urls),
 ]
