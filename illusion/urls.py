@@ -16,6 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+info = openapi.Info(
+    title="Illusion API",
+    default_version="",
+    description="Demonstrate the use of serializers"
+)
+
+
+schema_view = get_schema_view(info)
+
 urlpatterns = [
+    path('', schema_view.with_ui("swagger"), name="swagger"),
     path('admin/', admin.site.urls),
 ]
