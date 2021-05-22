@@ -1,0 +1,27 @@
+[report]
+fail_under = 100
+exclude_lines =
+    pragma: no cover
+    pass
+    def__repr__
+    def __str__
+
+[run]
+include =
+    core/*
+    illusion/*
+omit =
+    *__*
+    */apps.py
+    */settings.py
+    */urls.py
+    manage.py
+    */wsgi.py
+    */migrations/*
+    */config.py
+    *exceptions.py
+    tests/*
+    *asgi.py
+    core/db_models/*
+    ser_env/*
+
