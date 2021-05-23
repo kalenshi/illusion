@@ -36,8 +36,6 @@ class EmployeeListView(APIView):
         """
         queryset = Employee.objects.all()
 
-        filters = {}
-
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
