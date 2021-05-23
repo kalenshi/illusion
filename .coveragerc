@@ -7,9 +7,6 @@ exclude_lines =
     def __str__
 
 [run]
-include =
-    core/*
-    illusion/*
 omit =
     *__*
     */apps.py
