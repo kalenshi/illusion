@@ -8,7 +8,8 @@ class Salaries(models.Model):
         Employee,
         models.DO_NOTHING,
         db_column='emp_no',
-        primary_key=True
+        primary_key=True,
+        related_name="employee"
     )
     salary = models.IntegerField()
     from_date = models.DateField()
@@ -16,5 +17,6 @@ class Salaries(models.Model):
 
     class Meta:
         app_label = "core"
-        db_table = 'salaries'
+        db_table = "salaries"
+        get_latest_by = "to_date"
         unique_together = (('emp_no', 'from_date'),)
