@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
 from django.urls import path, include
 
 from drf_yasg.views import get_schema_view
@@ -30,10 +31,13 @@ info = openapi.Info(
     )
 )
 
-
 schema_view = get_schema_view(info)
 
 urlpatterns = [
     path("api/", include("core.urls")),
     path('', schema_view.with_ui("swagger"), name="swagger"),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += path('__debug__/', include(debug_toolbar.urls)),
