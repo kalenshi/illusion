@@ -15,6 +15,7 @@ class EmployeeListView(APIView):
 
     Lists all Employees or creates a new Employee
     """
+
     serializer_class = EmployeeSerializer
 
     @swagger_auto_schema(
@@ -34,6 +35,7 @@ class EmployeeListView(APIView):
 
         Returns: Employees
         """
+
         queryset = Employee.objects.all()
 
         serializer = self.serializer_class(queryset, many=True)

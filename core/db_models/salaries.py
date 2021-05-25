@@ -1,3 +1,4 @@
+
 from django.db import models
 
 from core.db_models.employee import Employee
@@ -19,4 +20,6 @@ class Salaries(models.Model):
         app_label = "core"
         db_table = "salaries"
         get_latest_by = "to_date"
-        unique_together = (('emp_no', 'from_date'),)
+        unique_together = (
+            ('emp_no', 'from_date'),
+        )

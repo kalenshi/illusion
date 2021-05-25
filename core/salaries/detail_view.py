@@ -15,20 +15,20 @@ class SalariesDetailView(APIView):
 
     def get_object(self, pk):
         """
-        Get the employees Current salary
+        Get the employees salary history
         """
 
         try:
-            return Salaries.objects.filter(emp_no=pk).latest()
+            return Salaries.objects.filter(emp_no=pk)
         except Salaries.DoesNotExist:
             raise Http404
 
     def get(self, request, emp_no):
         """
-
+        Retrieve the latest salary details using the employee number
         """
 
-        salary = self.get_object(emp_no)
-        serializer = self.serializer_class(instance=salary)
+        salaries = self.get_object(emp_no)
+        serializer = self.serializer_class(instance=salaries, many=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)

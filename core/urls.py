@@ -16,7 +16,7 @@ urlpatterns = [
     ),
     path("salaries/", SalariesListView.as_view(), name="salaries"),
     path(
-        "salaries/<emp_no>",
+        "salaries/<emp_no>/",
         SalariesDetailView.as_view(),
         name="salaries_details"
     ),
