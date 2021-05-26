@@ -16,3 +16,9 @@ class Employee(models.Model):
     def __str__(self):
         """String Representation of Employee"""
         return f"{self.first_name}, {self.last_name}"
+
+    def get_salaries(self):
+        """Retrieve all the salaries associated with this Employee"""
+        from core.db_models.salaries import Salaries
+
+        return Salaries.objects.filter(emp_no=self.emp_no)

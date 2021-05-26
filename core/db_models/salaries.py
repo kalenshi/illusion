@@ -10,7 +10,7 @@ class Salaries(models.Model):
         models.DO_NOTHING,
         db_column='emp_no',
         primary_key=True,
-        related_name="employee"
+        related_name="salaries"
     )
     salary = models.IntegerField()
     from_date = models.DateField()

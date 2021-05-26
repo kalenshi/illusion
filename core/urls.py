@@ -2,6 +2,8 @@ from django.urls import path
 
 from core.employee.detail_view import EmployeeDetailView
 from core.employee.list_view import EmployeeListView
+from core.profiles.detail_view import EmployeeProfileDetailView
+from core.profiles.list_view import EmployeeProfileListView
 from core.salaries.detail_view import SalariesDetailView
 from core.salaries.list_view import SalariesListView
 
@@ -20,4 +22,7 @@ urlpatterns = [
         SalariesDetailView.as_view(),
         name="salaries_details"
     ),
+    path("profiles/", EmployeeProfileListView.as_view(), name="profiles"),
+    path("profiles/<emp_no>/", EmployeeProfileDetailView.as_view(),
+         name="profiles")
 ]
